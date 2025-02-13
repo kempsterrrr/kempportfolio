@@ -1,11 +1,9 @@
 'use client';
 
-import Head from 'next/head';
 import * as React from 'react';
 import '@/lib/env';
 
-import ArrowLink from '@/components/links/ArrowLink';
-import Arlinkdeploybutton from '@/components/buttons/Arlinkdeploybutton';
+
 /**
  * SVGR Support
  * Caveat: No React Props Type.
@@ -13,7 +11,6 @@ import Arlinkdeploybutton from '@/components/buttons/Arlinkdeploybutton';
  * You can override the next-env if the type is important to you
  * @see https://stackoverflow.com/questions/68103844/how-to-override-next-js-svg-module-declaration
  */
-import Logo from '~/svg/Logo.svg';
 
 // !STARTERCONF -> Select !STARTERCONF and CMD + SHIFT + F also check usage rules.md
 // Before you begin editing, follow all comments with `STARTERCONF`,
@@ -24,32 +21,26 @@ import Logo from '~/svg/Logo.svg';
 
 export default function HomePage() {
   return (
-    <main>
-      <Head>
-        <title>Hi</title>
-      </Head>
-      <section className='bg-white'>
-        <div className='layout relative flex min-h-screen flex-col items-center justify-center py-12 text-center'>
-          <Logo className='w-16' />
-          <h1 className='mt-4'>Next.js + Tailwind CSS + TypeScript Starter</h1>
-          <p className='mt-2 text-sm text-gray-800'>
-            A starter for Next.js, Tailwind CSS, and TypeScript with Absolute
-            Import, Seo, Link component
-          </p>
-          <p className='mt-2 text-sm text-gray-700'>
-            <ArrowLink href='https://github.com/ARlinklabs/Nextjs-starter'>
-              See the repository
-            </ArrowLink>
-          </p>
-
-         
-        <div className='mt-6'>
-          <Arlinkdeploybutton />
-          </div>
-
-         
-        </div>
-      </section>
-    </main>
+      <section>
+      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
+        ar://kemp
+      </h1>
+      <p className="mb-4 prose">
+        Building blockchain ecosystems. Currently focused on the Permaweb as
+        Head of Ecosystem @{" "}
+        <a href="https://pds.inc/" target="_blank">
+          PDS Inc
+        </a>
+        , decentralising access to Arweaave with{" "}
+        <a href="https://ar.io/" target="_blank">
+          AR.IO Network
+        </a>
+        . Supporting builders and founders to solve problems where data
+        permanence and provenance matters.
+      </p>
+      {/* <div className="my-8">
+        <BlogPosts />
+      </div> */}
+    </section>
   );
 }

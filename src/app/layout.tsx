@@ -1,53 +1,44 @@
-import { Metadata } from 'next';
-import * as React from 'react';
+import { GeistMono } from "geist/font/mono";
+import { GeistSans } from "geist/font/sans";
+import type { Metadata } from "next";
 
-import '@/styles/globals.css';
-// !STARTERCONF This is for demo purposes, remove @/styles/colors.css import immediately
-import '@/styles/colors.css';
+import "./global.css";
 
-import { siteConfig } from '@/constant/config';
+import Footer from "@/components/footer"; 
+import { Navbar } from "@/components/nav";
 
-// !STARTERCONF Change these default meta
-// !STARTERCONF Look at @/constant/config to change them
+import { baseUrl } from "./sitemap";
+
 export const metadata: Metadata = {
-  metadataBase: new URL(siteConfig.url),
+  metadataBase: new URL(baseUrl),
   title: {
-    default: siteConfig.title,
-    template: `%s | ${siteConfig.title}`,
+    default: "ar://kemp | Building Blockchain Ecosystems",
+    template: "%s | ar://kemp",
   },
-  description: siteConfig.description,
-  robots: { index: true, follow: true },
-  // !STARTERCONF this is the default favicon, you can generate your own from https://realfavicongenerator.net/
-  // ! copy to /favicon folder
-  icons: {
-    icon: '/favicon/favicon.ico',
-    shortcut: '/favicon/favicon-16x16.png',
-    apple: '/favicon/apple-touch-icon.png',
-  },
-  manifest: `/favicon/site.webmanifest`,
+  description: "This is my portfolio.",
   openGraph: {
-    url: siteConfig.url,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    siteName: siteConfig.title,
-    images: [`${siteConfig.url}/images/og.jpg`],
-    type: 'website',
-    locale: 'en_US',
+    title: "My Portfolio",
+    description:
+      "Building blockchain ecosystems. Currently focused on the Permaweb as Head of Ecosystem @ PDS Inc, decentralising access to Arweaave with AR.IO Network. Supporting builders and founders to solve problems where data permanence and provenance is key.",
+    url: baseUrl,
+    siteName: "ar://kemp | Building Blockchain Ecosystems",
+    locale: "en_US",
+    type: "website",
   },
-  twitter: {
-    card: 'summary_large_image',
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [`${siteConfig.url}/images/og.jpg`],
-    // creator: '@th_clarence',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
-  // authors: [
-  //   {
-  //     name: 'Theodorus Clarence',
-  //     url: 'https://theodorusclarence.com',
-  //   },
-  // ],
 };
+
+const cx = (...classes) => classes.filter(Boolean).join(" ");
 
 export default function RootLayout({
   children,
@@ -55,8 +46,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html>
-      <body>{children}</body>
+    <html
+      lang="en"
+      className={cx(
+        "text-black bg-white dark:text-white dark:bg-black",
+        GeistSans.variable,
+        GeistMono.variable
+      )}
+    >
+      <body className="antialiased max-w-xl mx-4 mt-8 lg:mx-auto">
+        <main className="flex-auto min-w-0 mt-6 flex flex-col px-2 md:px-0">
+          <Navbar />
+          {children}
+          <Footer />
+        </main>
+      </body>
     </html>
   );
 }
